@@ -1,7 +1,7 @@
 <template>
   <div>
     <base-header
-      class="header pb-8 pt-2 pt-lg-8 d-flex align-items-center"
+      class="header pb-7 pt-lg-7 d-flex align-items-center"
       style="
         min-height: 10px;
         background-image: url(img/theme/profile-cover.jpg);
@@ -15,194 +15,209 @@
     </base-header>
 
     <div class="container-fluid mt--7">
-      <div class="row">
-        <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
-          <div class="card card-profile shadow">
-            <div class="row justify-content-center">
-              <div class="col-lg-3 order-lg-2">
-                <div class="card-profile-image">
-                  <a href="#">
-                    <img
-                      src="img/theme/team-4-800x800.jpg"
-                      class="rounded-circle" alt=""
-                    />
-                  </a>
+      <div class="col-xl-12 order-xl-1">
+        <card shadow type="secondary">
+          <template v-slot:header>
+            <div class="bg-white border-0">
+              <div class="row align-items-center">
+                <div class="col-12">
+                  <h3 class="mb-0">New Customer</h3>
                 </div>
               </div>
             </div>
-            <div
-              class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4"
-            >
-            </div>
-            <div class="card-body pt-0 pt-md-4">
+          </template>
+          <form>
+            <div class="pl-lg-4">
               <div class="row">
-                <div class="col">
-                  <div
-                    class="card-profile-stats d-flex justify-content-center mt-md-5"
-                  >
-                  </div>
+                <div class="col-lg-6">
+                  <base-input
+                    alternative=""
+                    label="Frist Name"
+                    input-classes="form-control-alternative"
+                    v-model="cusData.first_name"
+                  />
+                </div>
+                <div class="col-lg-6">
+                  <base-input
+                    alternative=""
+                    label="Last Name"
+                    input-classes="form-control-alternative"
+                    v-model="cusData.last_name"
+                  />
                 </div>
               </div>
-              <div class="text-center">
-                <h3>
-                  Jessica Jones<span class="font-weight-light">, 27</span>
-                </h3>
-                <div class="h5 font-weight-300">
-                  <em class="ni location_pin mr-2"></em>Bucharest, Romania
+              <div class="row">
+                <div class="col-lg-6">
+                  <base-input
+                    alternative=""
+                    label="Gender"
+                    input-classes="form-control-alternative"
+                    v-model="cusData.gender"
+                  />
                 </div>
-                <div class="h5 mt-4">
-                  <em class="ni business_briefcase-24 mr-2"></em>Solution Manager
-                  - Creative Tim Officer
+                <div class="col-lg-6">
+                  <base-input
+                    alternative=""
+                    label="Date of Birth"
+                    input-classes="form-control-alternative"
+                    v-model="cusData.dob"
+                  />
                 </div>
-                <div>
-                  <em class="ni education_hat mr-2"></em>University of Computer
-                  Science
-                </div>
-                <hr class="my-4" />
-                <p>
-                  Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick
-                  Murphy — writes, performs and records all of his own music.
-                </p>
-                <a href="#">Show User List</a>
               </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <base-input
+                    alternative=""
+                    label="Phone"
+                    input-classes="form-control-alternative"
+                    v-model="cusData.phone"
+                  />
+                </div>
+                <div class="col-lg-6">
+                  <base-input
+                    alternative=""
+                    label="Email"
+                    input-classes="form-control-alternative"
+                    v-model="cusData.email"
+                  />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <base-input
+                    alternative=""
+                    label="Nationality"
+                    input-classes="form-control-alternative"
+                    v-model="cusData.nationality"
+                  />
+                </div>
+                <div class="col-lg-6">
+                  <base-input
+                    alternative=""
+                    label="Cccupation"
+                    input-classes="form-control-alternative"
+                    v-model="cusData.occupation"
+                  />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <base-input
+                    alternative=""
+                    label="Income"
+                    input-classes="form-control-alternative"
+                    v-model="cusData.income"
+                  />
+                </div>
+                <div class="col-lg-6">
+                  <base-input
+                    alternative=""
+                    label="Expense"
+                    input-classes="form-control-alternative"
+                    v-model="cusData.expense"
+                  />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <base-input
+                    alternative=""
+                    label="Identity Type"
+                    input-classes="form-control-alternative"
+                    v-model="cusData.identity_type"
+                  />
+                </div>
+                <div class="col-lg-6">
+                  <base-input
+                    alternative=""
+                    label="Identity Number"
+                    input-classes="form-control-alternative"
+                    v-model="cusData.identity_number"
+                  />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <base-input
+                    alternative=""
+                    type="date"
+                    label="Issue Date"
+                    input-classes="form-control-alternative"
+                    v-model="cusData.issue_date"
+                  />
+                </div>
+                <div class="col-lg-6">
+                  <base-input
+                    alternative=""
+                    label="Issue Expired Date"
+                    input-classes="form-control-alternative"
+                    v-model="cusData.issue_expired_date"
+                  />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <base-input
+                    alternative=""
+                    label="House Number"
+                    input-classes="form-control-alternative"
+                    v-model="cusData.no_number"
+                  />
+                </div>
+                <div class="col-lg-6">
+                  <base-input
+                    alternative=""
+                    type="date"
+                    label="Street Number"
+                    input-classes="form-control-alternative"
+                    v-model="cusData.street_no"
+                  />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-12">
+                  <base-input
+                    alternative=""
+                    label="Address"
+                    input-classes="form-control-alternative"
+                    v-model="cusData.address"
+                  />
+                </div>
+                <div class="col-lg-12">
+                  <base-input
+                    alternative=""
+                    type="file"
+                    label="Profile"
+                    input-classes="form-control-alternative"
+                    v-model="cusData.profile_img"
+                  />
+                </div>
+              </div>
+              <button type="button" class="btn btn-primary"><em class="fas fa-save"></em> Save</button>
+              <button type="button" class="btn btn-secondary"><em class="fas fa-window-close"></em> Cancel</button>
             </div>
-          </div>
-        </div>
-
-        <div class="col-xl-8 order-xl-1">
-          <card shadow type="secondary">
-            <template v-slot:header>
-              <div class="bg-white border-0">
-                <div class="row align-items-center">
-                  <div class="col-8">
-                    <h3 class="mb-0">My account</h3>
-                  </div>
-                  <div class="col-4 text-right">
-                    <a href="#!" class="btn btn-sm btn-primary">Settings</a>
-                  </div>
-                </div>
-              </div>
-            </template>
-
-            <form>
-              <h6 class="heading-small text-muted mb-4">User information</h6>
-              <div class="pl-lg-4">
-                <div class="row">
-                  <div class="col-lg-6">
-                    <base-input
-                      alternative=""
-                      label="Full Name"
-                      input-classes="form-control-alternative"
-                      v-model="model.name"
-                    />
-                  </div>
-                  <div class="col-lg-6">
-                    <base-input
-                      alternative=""
-                      label="Gender"
-                      input-classes="form-control-alternative"
-                      v-model="model.name"
-                    />
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-lg-6">
-                    <base-input
-                      alternative=""
-                      label="Email address"
-                      input-classes="form-control-alternative"
-                      v-model="model.email"
-                    />
-                  </div>
-                  <div class="col-lg-6">
-                    <base-input
-                      alternative=""
-                      label="Date of Birth"
-                      input-classes="form-control-alternative"
-                      v-model="model.lastName"
-                    />
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-lg-6">
-                    <base-input
-                      alternative=""
-                      label="Password"
-                      input-classes="form-control-alternative"
-                      v-model="model.password"
-                    />
-                  </div>
-                  <div class="col-lg-6">
-                    <base-input
-                      alternative=""
-                      label="Confirm Password"
-                      input-classes="form-control-alternative"
-                      v-model="model.con_password"
-                    />
-                  </div>
-                </div>
-              </div>
-              <!-- Address -->
-              <div class="pl-lg-4">
-                <div class="row">
-                  <div class="col-md-12">
-                    <base-input
-                      alternative=""
-                      label="Address"
-                      placeholder="Home Address"
-                      input-classes="form-control-alternative"
-                      v-model="model.address"
-                    />
-                  </div>
-                  <div class="col-lg-12">
-                    <base-input
-                      alternative=""
-                      type="file"
-                      label="Profile"
-                      input-classes="form-control-alternative"
-                      v-model="model.con_password"
-                    />
-                  </div>
-                </div>
-              </div>
-              <!-- Description -->
-              <div class="pl-lg-4">
-                <div class="form-group">
-                  <base-input alternative="" label="About Me">
-                    <textarea
-                      rows="4"
-                      class="form-control form-control-alternative"
-                      placeholder="A few words about you ..."
-                    ></textarea
-                    >
-                  </base-input>
-                </div>
-              </div>
-            </form>
-          </card>
-        </div>
+          </form>
+        </card>
       </div>
     </div>
   </div>
 </template>
 <script>
 export default {
-  name: "user-profile",
+  name: "newcustomer",
   data() {
     return {
-      model: {
-        username: "",
-        email: "",
-        firstName: "",
-        lastName: "",
-        address: "",
-        city: "",
-        country: "",
-        zipCode: "",
-        about: "",
-      },
+      cusData: {},
     };
   },
 };
 </script>
-<style></style>
+<style>
+.col-xl-12,
+.col-xl,
+.col-xl-auto {
+  position: relative;
+  padding-right: 0px !important;
+  padding-left: 0px !important;
+}
+</style>

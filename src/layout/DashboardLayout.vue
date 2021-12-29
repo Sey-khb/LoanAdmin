@@ -18,14 +18,14 @@
           :link="{
             name: 'Customer Lists',
             icon: 'ni ni-bullet-list-67',
-            path: '/list-customer',
+            path: 'listcustomer',
           }"
         />
         <sidebar-item
           :link="{
             name: 'New Customer',
             icon: 'ni ni-fat-add',
-            path: '/new-customer',
+            path: 'newcustomer',
           }"
         />
         <!-- Disbursement -->

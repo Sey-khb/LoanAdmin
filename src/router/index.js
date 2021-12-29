@@ -6,7 +6,7 @@ import AuthLayout from "@/layout/AuthLayout";
 
 import Dashboard from "../views/Dashboard.vue";
 import ListCustomer from "../views/ListCustomer.vue";
-import Maps from "../views/Maps.vue";
+import NewCustomer from "../views/NewCustomer.vue";
 import Profile from "../views/UserProfile.vue";
 import Tables from "../views/Tables.vue";
 
@@ -27,15 +27,15 @@ const routes = [
         meta: { requireAuth: true },
       },
       {
-        path: "/list-customer",
+        path: "listcustomer",
         name: "listCustomer",
         components: { default: ListCustomer },
         meta: { requireAuth: true },
       },
       {
-        path: "/maps",
-        name: "maps",
-        components: { default: Maps },
+        path: "newcustomer",
+        name: "newcustomer",
+        components: { default: NewCustomer },
         meta: { requireAuth: true },
       },
       {
