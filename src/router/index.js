@@ -9,6 +9,7 @@ import ListCustomer from "../views/ListCustomer.vue";
 import NewCustomer from "../views/NewCustomer.vue";
 import ListDisbursement from "../views/ListDisbursement.vue";
 import NewDisbursement from "../views/NewDisbursement.vue";
+import ListUser from "../views/ListUser.vue";
 import Profile from "../views/UserProfile.vue";
 import Tables from "../views/Tables.vue";
 
@@ -50,6 +51,12 @@ const routes = [
         path: "new-disbursement",
         name: "new-disbursement",
         components: { default: NewDisbursement },
+        meta: { requireAuth: true },
+      },
+      {
+        path: "list-user",
+        name: "list-user",
+        components: { default: ListUser },
         meta: { requireAuth: true },
       },
       {

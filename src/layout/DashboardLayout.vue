@@ -43,7 +43,13 @@
             path: 'new-disbursement',
           }"
         />
-
+        <sidebar-item
+          :link="{
+            name: 'User Lists',
+            icon: 'ni ni-bullet-list-67',
+            path: 'list-user',
+          }"
+        />
         <sidebar-item
           :link="{
             name: 'User Profile',
