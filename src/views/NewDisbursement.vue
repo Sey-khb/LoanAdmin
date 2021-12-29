@@ -193,8 +193,14 @@
                   />
                 </div>
               </div>
-              <button type="button" class="btn btn-primary"><em class="fas fa-save"></em> Save</button>
-              <button type="button" class="btn btn-secondary"><em class="fas fa-window-close"></em> Cancel</button>
+              <button type="button" class="btn btn-primary">
+                <em class="fas fa-save"></em> 
+                Save
+              </button>
+              <button type="button" class="btn btn-secondary">
+                <em class="fas fa-window-close"></em>
+                Cancel
+              </button>
             </div>
           </form>
         </card>

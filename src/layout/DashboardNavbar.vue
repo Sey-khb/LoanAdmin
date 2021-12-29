@@ -41,18 +41,6 @@
             <em class="ni ni-single-02"></em>
             <span>My profile</span>
           </router-link>
-          <router-link to="/profile" class="dropdown-item">
-            <em class="ni ni-settings-gear-65"></em>
-            <span>Settings</span>
-          </router-link>
-          <router-link to="/profile" class="dropdown-item">
-            <em class="ni ni-calendar-grid-58"></em>
-            <span>Activity</span>
-          </router-link>
-          <router-link to="/profile" class="dropdown-item">
-            <em class="ni ni-support-16"></em>
-            <span>Support</span>
-          </router-link>
           <div class="dropdown-divider"></div>
           <router-link to="/profile" class="dropdown-item">
             <em class="ni ni-user-run"></em>

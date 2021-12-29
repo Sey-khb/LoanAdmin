@@ -96,7 +96,6 @@ router.beforeEach((to, from, next) => {
   // Get logged user
   // let loggedUser = store.getters.getLoggedUser;
   let loggedUser = true;
-
   if (to.matched.some((record) => record.meta.requireAuth)) {
     // Check if access token expired
     if (loggedUser) {
