@@ -24,7 +24,7 @@
                 aria-haspopup="true"
                 aria-expanded="false"
               >
-                <i class="ni ni-bell-55"></i>
+                <em class="ni ni-bell-55"></em>
               </a>
             </template>
 
@@ -101,7 +101,7 @@ export default {
   props: {
     logo: {
       type: String,
-      default: "img/brand/green.png",
+      default: "img/brand/z1flexiblesolution-logo-04.png",
       description: "Sidebar app logo",
     },
     autoClose: {

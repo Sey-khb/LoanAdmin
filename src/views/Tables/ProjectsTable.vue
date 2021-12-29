@@ -25,12 +25,12 @@
         :data="tableData"
       >
         <template v-slot:columns>
-          <th>Project</th>
-          <th>Budget</th>
-          <th>Status</th>
-          <th>Users</th>
-          <th>Completion</th>
-          <th></th>
+          <th scope="">Project</th>
+          <th scope="">Budget</th>
+          <th scope="">Status</th>
+          <th scope="">Users</th>
+          <th scope="">Completion</th>
+          <th scope=""></th>
         </template>
 
         <template v-slot:default="row">
@@ -49,7 +49,7 @@
           </td>
           <td>
             <badge class="badge-dot mr-4" :type="row.item.statusType">
-              <i :class="`bg-${row.item.statusType}`"></i>
+              <em :class="`bg-${row.item.statusType}`"></em>
               <span class="status">{{ row.item.status }}</span>
             </badge>
           </td>
