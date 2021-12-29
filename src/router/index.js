@@ -32,6 +32,7 @@ const routes = [
         components: { default: ListCustomer },
         meta: { requireAuth: true },
       },
+      
       {
         path: "/maps",
         name: "maps",
