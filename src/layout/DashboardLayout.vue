@@ -33,14 +33,14 @@
           :link="{
             name: 'Disbursed Lists',
             icon: 'ni ni-bullet-list-67',
-            path: '/list-disbursed',
+            path: 'list-disbursed',
           }"
         />
         <sidebar-item
           :link="{
             name: 'New Disbursement',
             icon: 'ni ni-fat-add',
-            path: '/new-disbursement',
+            path: 'new-disbursement',
           }"
         />
 

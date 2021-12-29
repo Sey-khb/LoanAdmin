@@ -7,6 +7,8 @@ import AuthLayout from "@/layout/AuthLayout";
 import Dashboard from "../views/Dashboard.vue";
 import ListCustomer from "../views/ListCustomer.vue";
 import NewCustomer from "../views/NewCustomer.vue";
+import ListDisbursement from "../views/ListDisbursement.vue";
+import NewDisbursement from "../views/NewDisbursement.vue";
 import Profile from "../views/UserProfile.vue";
 import Tables from "../views/Tables.vue";
 
@@ -36,6 +38,18 @@ const routes = [
         path: "newcustomer",
         name: "newcustomer",
         components: { default: NewCustomer },
+        meta: { requireAuth: true },
+      },
+      {
+        path: "list-disbursed",
+        name: "list-disbursed",
+        components: { default: ListDisbursement },
+        meta: { requireAuth: true },
+      },
+      {
+        path: "new-disbursement",
+        name: "new-disbursement",
+        components: { default: NewDisbursement },
         meta: { requireAuth: true },
       },
       {
