@@ -6,17 +6,13 @@
       containerClasses="px-4 container"
       expand
     >
-      <!-- <router-link slot="brand" class="navbar-brand" to="/">
-                <img src="img/brand/white.png"/>
-            </router-link> -->
-
       <template v-slot="{ closeMenu }">
         <!-- Collapse header -->
         <div class="navbar-collapse-header d-md-none">
           <div class="row">
             <div class="col-6 collapse-brand">
               <router-link to="/">
-                <img src="img/brand/green.png" />
+                <img src="img/brand/green.png" alt=""/>
               </router-link>
             </div>
             <div class="col-6 collapse-close">
@@ -36,25 +32,25 @@
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
             <router-link class="nav-link nav-link-icon" to="/">
-              <i class="ni ni-planet"></i>
+              <em class="ni ni-planet"></em>
               <span class="nav-link-inner--text">Dashboard</span>
             </router-link>
           </li>
           <li class="nav-item">
             <router-link class="nav-link nav-link-icon" to="/register">
-              <i class="ni ni-circle-08"></i>
+              <em class="ni ni-circle-08"></em>
               <span class="nav-link-inner--text">Register</span>
             </router-link>
           </li>
           <li class="nav-item">
             <router-link class="nav-link nav-link-icon" to="/login">
-              <i class="ni ni-key-25"></i>
+              <em class="ni ni-key-25"></em>
               <span class="nav-link-inner--text">Login</span>
             </router-link>
           </li>
           <li class="nav-item">
             <router-link class="nav-link nav-link-icon" to="/profile">
-              <i class="ni ni-single-02"></i>
+              <em class="ni ni-single-02"></em>
               <span class="nav-link-inner--text">Profile</span>
             </router-link>
           </li>
@@ -63,19 +59,6 @@
     </base-nav>
     <!-- Header -->
     <div class="header bg-gradient-success py-7 py-lg-8">
-      <div class="container">
-        <div class="header-body text-center mb-7">
-          <div class="row justify-content-center">
-            <div class="col-lg-5 col-md-6">
-              <h1 class="text-white">Welcome!</h1>
-              <p class="text-lead text-white">
-                Use these awesome forms to login or create new account in your
-                project for free.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
       <div class="separator separator-bottom separator-skew zindex-100">
         <svg
           x="0"

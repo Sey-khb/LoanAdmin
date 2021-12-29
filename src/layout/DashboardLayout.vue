@@ -13,33 +13,42 @@
             path: '/dashboard',
           }"
         />
+        <!-- Customer -->
+        <sidebar-item
+          :link="{
+            name: 'Customer Lists',
+            icon: 'ni ni-bullet-list-67',
+            path: '/list-customer',
+          }"
+        />
+        <sidebar-item
+          :link="{
+            name: 'New Customer',
+            icon: 'ni ni-fat-add',
+            path: '/new-customer',
+          }"
+        />
+        <!-- Disbursement -->
+        <sidebar-item
+          :link="{
+            name: 'Disbursed Lists',
+            icon: 'ni ni-bullet-list-67',
+            path: '/list-disbursed',
+          }"
+        />
+        <sidebar-item
+          :link="{
+            name: 'New Disbursement',
+            icon: 'ni ni-fat-add',
+            path: '/new-disbursement',
+          }"
+        />
 
-        <sidebar-item
-          :link="{
-            name: 'Icons',
-            icon: 'ni ni-planet text-blue',
-            path: '/icons',
-          }"
-        />
-        <sidebar-item
-          :link="{
-            name: 'Maps',
-            icon: 'ni ni-pin-3 text-orange',
-            path: '/maps',
-          }"
-        />
         <sidebar-item
           :link="{
             name: 'User Profile',
             icon: 'ni ni-single-02 text-yellow',
             path: '/profile',
-          }"
-        />
-        <sidebar-item
-          :link="{
-            name: 'Tables',
-            icon: 'ni ni-bullet-list-67 text-red',
-            path: '/tables',
           }"
         />
         <sidebar-item

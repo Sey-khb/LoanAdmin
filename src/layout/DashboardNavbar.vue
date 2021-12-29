@@ -26,11 +26,11 @@
               <span class="avatar avatar-sm rounded-circle">
                 <img
                   alt="Image placeholder"
-                  src="img/theme/team-4-800x800.jpg"
+                  src="img/theme/rotana-800X800.jpeg"
                 />
               </span>
               <div class="media-body ml-2 d-none d-lg-block">
-                <span class="mb-0 text-sm font-weight-bold">Jessica Jones</span>
+                <span class="mb-0 text-sm font-weight-bold">Phai Rotana</span>
               </div>
             </div>
           </template>
@@ -38,24 +38,24 @@
             <h6 class="text-overflow m-0">Welcome!</h6>
           </div>
           <router-link to="/profile" class="dropdown-item">
-            <i class="ni ni-single-02"></i>
+            <em class="ni ni-single-02"></em>
             <span>My profile</span>
           </router-link>
           <router-link to="/profile" class="dropdown-item">
-            <i class="ni ni-settings-gear-65"></i>
+            <em class="ni ni-settings-gear-65"></em>
             <span>Settings</span>
           </router-link>
           <router-link to="/profile" class="dropdown-item">
-            <i class="ni ni-calendar-grid-58"></i>
+            <em class="ni ni-calendar-grid-58"></em>
             <span>Activity</span>
           </router-link>
           <router-link to="/profile" class="dropdown-item">
-            <i class="ni ni-support-16"></i>
+            <em class="ni ni-support-16"></em>
             <span>Support</span>
           </router-link>
           <div class="dropdown-divider"></div>
           <router-link to="/profile" class="dropdown-item">
-            <i class="ni ni-user-run"></i>
+            <em class="ni ni-user-run"></em>
             <span>Logout</span>
           </router-link>
         </base-dropdown>
