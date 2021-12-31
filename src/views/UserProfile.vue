@@ -16,60 +16,7 @@
 
     <div class="container-fluid mt--7">
       <div class="row">
-        <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
-          <div class="card card-profile shadow">
-            <div class="row justify-content-center">
-              <div class="col-lg-3 order-lg-2">
-                <div class="card-profile-image">
-                  <a href="#">
-                    <img
-                      src="img/theme/team-4-800x800.jpg"
-                      class="rounded-circle" alt=""
-                    />
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div
-              class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4"
-            >
-            </div>
-            <div class="card-body pt-0 pt-md-4">
-              <div class="row">
-                <div class="col">
-                  <div
-                    class="card-profile-stats d-flex justify-content-center mt-md-5"
-                  >
-                  </div>
-                </div>
-              </div>
-              <div class="text-center">
-                <h3>
-                  Jessica Jones<span class="font-weight-light">, 27</span>
-                </h3>
-                <div class="h5 font-weight-300">
-                  <em class="ni location_pin mr-2"></em>Bucharest, Romania
-                </div>
-                <div class="h5 mt-4">
-                  <em class="ni business_briefcase-24 mr-2"></em>Solution Manager
-                  - Creative Tim Officer
-                </div>
-                <div>
-                  <em class="ni education_hat mr-2"></em>University of Computer
-                  Science
-                </div>
-                <hr class="my-4" />
-                <p>
-                  Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick
-                  Murphy — writes, performs and records all of his own music.
-                </p>
-                <a href="#">Show User List</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-xl-8 order-xl-1">
+        <div class="col-xl-12 order-xl-1">
           <card shadow type="secondary">
             <template v-slot:header>
               <div class="bg-white border-0">
@@ -83,61 +30,66 @@
                 </div>
               </div>
             </template>
-
             <form>
               <h6 class="heading-small text-muted mb-4">User information</h6>
               <div class="pl-lg-4">
                 <div class="row">
                   <div class="col-lg-6">
                     <base-input
+                      type="text"
                       alternative=""
                       label="Full Name"
                       input-classes="form-control-alternative"
-                      v-model="model.name"
+                      v-model="userData.name"
                     />
                   </div>
                   <div class="col-lg-6">
-                    <base-input
-                      alternative=""
-                      label="Gender"
-                      input-classes="form-control-alternative"
-                      v-model="model.name"
-                    />
+                    <label for="Gender">Gender</label>
+                    <select class="form-control form-control-alternative">
+                      <option value=""></option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                    </select>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-lg-6">
                     <base-input
+                      readonly
+                      type="email"
                       alternative=""
                       label="Email address"
                       input-classes="form-control-alternative"
-                      v-model="model.email"
+                      v-model="userData.email"
                     />
                   </div>
                   <div class="col-lg-6">
                     <base-input
+                      type="date"
                       alternative=""
                       label="Date of Birth"
                       input-classes="form-control-alternative"
-                      v-model="model.lastName"
+                      v-model="userData.dob"
                     />
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-lg-6">
                     <base-input
+                      type="password"
                       alternative=""
                       label="Password"
                       input-classes="form-control-alternative"
-                      v-model="model.password"
+                      v-model="userData.password"
                     />
                   </div>
                   <div class="col-lg-6">
                     <base-input
+                      type="password"
                       alternative=""
                       label="Confirm Password"
                       input-classes="form-control-alternative"
-                      v-model="model.con_password"
+                      v-model="userData.con_password"
                     />
                   </div>
                 </div>
@@ -147,11 +99,12 @@
                 <div class="row">
                   <div class="col-md-12">
                     <base-input
+                      type="text"
                       alternative=""
                       label="Address"
                       placeholder="Home Address"
                       input-classes="form-control-alternative"
-                      v-model="model.address"
+                      v-model="userData.address"
                     />
                   </div>
                   <div class="col-lg-12">
@@ -160,7 +113,7 @@
                       type="file"
                       label="Profile"
                       input-classes="form-control-alternative"
-                      v-model="model.con_password"
+                      v-model="userData.profile"
                     />
                   </div>
                 </div>
@@ -173,10 +126,23 @@
                       rows="4"
                       class="form-control form-control-alternative"
                       placeholder="A few words about you ..."
-                    ></textarea
+                      v-model="userData.about_me"
                     >
+                    </textarea>
                   </base-input>
                 </div>
+                <button
+                  @click="updateUser()"
+                  type="button"
+                  class="btn btn-primary"
+                >
+                  <em class="fas fa-save"></em>
+                  Update
+                </button>
+                <button type="button" class="btn btn-secondary">
+                  <em class="fas fa-window-close"></em>
+                  Cancel
+                </button>
               </div>
             </form>
           </card>
@@ -186,23 +152,36 @@
   </div>
 </template>
 <script>
+import httpAxios from "@/utils/http-axios";
+
 export default {
-  name: "user-profile",
+  name: "Profile",
   data() {
     return {
-      model: {
-        username: "",
+      userData: {
+        name: "",
+        gender: "",
         email: "",
-        firstName: "",
-        lastName: "",
+        dob: "",
+        password: "",
+        con_password: "",
         address: "",
-        city: "",
-        country: "",
-        zipCode: "",
-        about: "",
+        profile: "",
+        about_me: "",
       },
     };
   },
+  methods: {
+    updateUser(user_id) {
+      httpAxios
+        .put("user/" + user_id, this.userData)
+        .then(function (response) {
+          this.userData = response.data.data;
+        })
+        .catch(function (error) {
+          console.log(error.message);
+        });
+    },
+  },
 };
 </script>
-<style></style>

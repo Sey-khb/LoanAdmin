@@ -7,11 +7,12 @@ import AuthLayout from "@/layout/AuthLayout";
 import Dashboard from "../views/Dashboard.vue";
 import ListCustomer from "../views/ListCustomer.vue";
 import NewCustomer from "../views/NewCustomer.vue";
-import ListDisbursement from "../views/ListDisbursement.vue";
-import NewDisbursement from "../views/NewDisbursement.vue";
+import ListDisbursement from "../views/Disbursements/ListDisbursement";
+import NewDisbursement from "../views/Disbursements/NewDisbursement";
 import ListUser from "../views/ListUser.vue";
 import Profile from "../views/UserProfile.vue";
 import Tables from "../views/Tables.vue";
+import ShowDis from "../views/Disbursements/Show.vue";
 
 import Login from "../views/Login.vue";
 import Register from "../views/Register.vue";
@@ -25,43 +26,43 @@ const routes = [
     children: [
       {
         path: "/dashboard",
-        name: "dashboard",
+        name: "Dashboard",
         components: { default: Dashboard },
         meta: { requireAuth: true },
       },
       {
-        path: "listcustomer",
-        name: "listCustomer",
+        path: "list-customer",
+        name: "List Customer",
         components: { default: ListCustomer },
         meta: { requireAuth: true },
       },
       {
-        path: "newcustomer",
-        name: "newcustomer",
+        path: "new-customer",
+        name: "New Customer",
         components: { default: NewCustomer },
         meta: { requireAuth: true },
       },
       {
         path: "list-disbursed",
-        name: "list-disbursed",
+        name: "List disbursed",
         components: { default: ListDisbursement },
         meta: { requireAuth: true },
       },
       {
         path: "new-disbursement",
-        name: "new-disbursement",
+        name: "New disbursement",
         components: { default: NewDisbursement },
         meta: { requireAuth: true },
       },
       {
         path: "list-user",
-        name: "list-user",
+        name: "UserList",
         components: { default: ListUser },
         meta: { requireAuth: true },
       },
       {
         path: "/profile",
-        name: "profile",
+        name: "Profile",
         components: { default: Profile },
         meta: { requireAuth: true },
       },
@@ -71,22 +72,34 @@ const routes = [
         components: { default: Tables },
         meta: { requireAuth: true },
       },
+      {
+        path: "/list-disbursed/show",
+        name: "Show",
+        components: { default: ShowDis },
+        meta: { requireAuth: true },
+      },
     ],
   },
   {
     path: "/",
-    redirect: "login",
+    redirect: "/login",
     component: AuthLayout,
     children: [
       {
         path: "/login",
-        name: "login",
+        name: "Login",
         components: { default: Login },
+        meta: { requireAuth: false },
       },
       {
         path: "/register",
-        name: "register",
+        name: "Register",
         components: { default: Register },
+        meta: { requireAuth: false },
+      },
+      {
+        path: "/logout",
+        name: "Logout",
       },
     ],
   },
@@ -94,39 +107,15 @@ const routes = [
 
 const router = createRouter({
   history: createWebHashHistory(),
+  mode: history,
   linkActiveClass: "active",
   routes,
 });
 
-// Middlewares
 router.beforeEach((to, from, next) => {
-  // Get logged user
-  // let loggedUser = store.getters.getLoggedUser;
-  let loggedUser = true;
-  if (to.matched.some((record) => record.meta.requireAuth)) {
-    // Check if access token expired
-    if (loggedUser) {
-      let currentDateTime = new Date().getTime();
-      if (currentDateTime > loggedUser.expiryDate) {
-        store.dispatch("logOut");
-        return router.replace("/login");
-      } else {
-        next(); 
-      }
-    }
-    else {
-      router.replace("/login");
-    }
-    // Auth
-    if (to.meta.auth) {
-      if (loggedUser) return next();
-      else return router.replace("login");
-    }
-  }
-  // Allow page to load
-  else {
-    next();
-  }
-});
+  let loggedUser = store.getters.getLoggedUser;
+  if (to.meta.requireAuth && !loggedUser) next({ name: 'Login' })
+  else next()
+})
 
 export default router;

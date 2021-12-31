@@ -8,6 +8,7 @@
           </div>
           <form role="form">
             <base-input
+              autocomplete
               formClasses="input-group-alternative"
               placeholder="Name"
               addon-left-icon="ni ni-hat-3"
@@ -16,6 +17,7 @@
             </base-input>
 
             <base-input
+              autocomplete
               formClasses="input-group-alternative"
               placeholder="Email"
               type="email"
@@ -26,6 +28,7 @@
             </base-input>
 
             <base-input
+              autocomplete
               formClasses="input-group-alternative"
               placeholder="Password"
               type="password"
@@ -35,6 +38,7 @@
             </base-input>
 
             <base-input
+              autocomplete
               formClasses="input-group-alternative"
               placeholder="Confirm Password"
               type="password"
@@ -82,7 +86,7 @@ export default {
   },
   methods: {
     async register() {
-      await httpAxios.post("http://localhost:8000/register", this.registerData)
+      await httpAxios.post("register", this.registerData)
 
       this.$router.push("/login")
     },

@@ -210,7 +210,7 @@
 </template>
 <script>
 export default {
-  name: "newcustomer",
+  name: "New disbursement",
   data() {
     return {
       cusData: {},

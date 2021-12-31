@@ -21,7 +21,7 @@
             <div class="bg-white border-0">
               <div class="row align-items-center">
                 <div class="col-12">
-                  <h3 class="mb-0">All Disbursed</h3>
+                  <router-link to="/new-disbursement" class="btn btn-primary btn-sm mb-2"><em class="far fa-plus-square"></em> New</router-link>
                 </div>
               </div>
 
@@ -46,12 +46,9 @@
                     <td>Otto</td>
                     <td>@mdo</td>
                     <td>
-                      <button type="button" class="btn btn-sm btn-info" title="Preview">
+                      <router-link to="/list-disbursed/show" class="btn btn-sm btn-info">                        
                         <em class="far fa-eye"></em>
-                      </button>
-                      <button type="button" class="btn btn-sm btn-primary" title="Edit">
-                        <em class="far fa-edit"></em>
-                      </button>
+                      </router-link>
                       <button type="button" class="btn btn-sm btn-danger" title="Delete">
                         <em class="far fa-trash-alt"></em>
                       </button>

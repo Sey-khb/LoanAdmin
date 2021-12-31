@@ -10,6 +10,7 @@
             <base-input
               formClasses="input-group-alternative mb-3"
               placeholder="Email"
+              autocomplete
               addon-left-icon="ni ni-email-83"
               v-model="username"
               type="email"
@@ -19,6 +20,7 @@
             <base-input
               formClasses="input-group-alternative mb-3"
               placeholder="Password"
+              autocomplete
               type="password"
               addon-left-icon="ni ni-lock-circle-open"
               v-model="password"
@@ -65,13 +67,13 @@ export default {
       formData.append('username', self.username)
       formData.append('password', self.password)
       httpAxios({
-        url: 'http://localhost:8000/login',
+        url: 'login',
         method: 'POST',
         data:  formData,
       }).then(async (response) => {
-        self.$store.commit('LOGGED_USER', response.data.token);
-
-        self.$router.go({ name: 'dashboard' });
+        self.$store.commit('LOGGED_USER', response.data);
+        
+        self.$router.push('/dashboard');
       });
     },
   },

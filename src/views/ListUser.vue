@@ -38,13 +38,13 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
+                  <tr v-for="(item, index) in users" :key="item.id">
+                    <th scope="row">{{ index + 1 }}</th>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.gender }}</td>
+                    <td>{{ item.dob }}</td>
+                    <td>{{ item.phone }}</td>
+                    <td>{{ item.email }}</td>
                     <td>
                       <button
                         type="button"
@@ -53,13 +53,13 @@
                       >
                         <em class="far fa-eye"></em>
                       </button>
-                      <button
-                        type="button"
+                      <router-link
+                        to="/profile"
+                        @click="updateUser(item.id)"
                         class="btn btn-sm btn-primary"
-                        title="Edit"
                       >
                         <em class="far fa-edit"></em>
-                      </button>
+                      </router-link>
                       <button
                         type="button"
                         class="btn btn-sm btn-danger"
@@ -82,27 +82,28 @@
 import httpAxios from "@/utils/http-axios";
 
 export default {
-  name: "user-list",
+  name: "UserList",
   data: function () {
     return {
-      users: [],
+      users: {},
     };
   },
   methods: {
     getUsers() {
       var self = this;
-      httpAxios.get('user').then(function (response) {
-        console.log(response.data);
-        self.users = response.data;
-      })
-      .catch(function (error) {
-        console.log(error.message);
-      });
-      }
+      httpAxios
+        .get("user")
+        .then(function (response) {
+          self.users = response.data.data;
+        })
+        .catch(function (error) {
+          console.log(error.message);
+        });
     },
-    created() {
-      this.getUsers();
-    },
+  },
+  created() {
+    this.getUsers();
+  },
 };
 </script>
 <style>

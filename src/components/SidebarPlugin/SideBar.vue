@@ -51,24 +51,24 @@
               <h6 class="text-overflow m-0">Welcome!</h6>
             </div>
             <router-link to="/profile" class="dropdown-item">
-              <i class="ni ni-single-02"></i>
+              <em class="ni ni-single-02"></em>
               <span>My profile</span>
             </router-link>
             <router-link to="/profile" class="dropdown-item">
-              <i class="ni ni-settings-gear-65"></i>
+              <em class="ni ni-settings-gear-65"></em>
               <span>Settings</span>
             </router-link>
             <router-link to="/profile" class="dropdown-item">
-              <i class="ni ni-calendar-grid-58"></i>
+              <em class="ni ni-calendar-grid-58"></em>
               <span>Activity</span>
             </router-link>
             <router-link to="/profile" class="dropdown-item">
-              <i class="ni ni-support-16"></i>
+              <em class="ni ni-support-16"></em>
               <span>Support</span>
             </router-link>
             <div class="dropdown-divider"></div>
             <a href="#!" class="dropdown-item">
-              <i class="ni ni-user-run"></i>
+              <em class="ni ni-user-run"></em>
               <span>Logout</span>
             </a>
           </base-dropdown>
@@ -84,7 +84,7 @@
           <div class="row">
             <div class="col-6 collapse-brand">
               <router-link to="/">
-                <img :src="logo" />
+                <img :src="logo" alt=""/>
               </router-link>
             </div>
             <div class="col-6 collapse-close">

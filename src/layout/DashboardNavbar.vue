@@ -19,7 +19,7 @@
       </div>
     </form>
     <ul class="navbar-nav align-items-center d-none d-md-flex">
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown p-2">
         <base-dropdown class="nav-link pr-0">
           <template v-slot:title>
             <div class="media align-items-center">
@@ -37,14 +37,18 @@
           <div class="dropdown-header noti-title">
             <h6 class="text-overflow m-0">Welcome!</h6>
           </div>
-          <router-link to="/profile" class="dropdown-item">
+          <router-link 
+            to="/profile"
+            class="btn-sm">
             <em class="ni ni-single-02"></em>
-            <span>My profile</span>
-          </router-link>
-          <div class="dropdown-divider"></div>
-          <router-link to="/profile" class="dropdown-item">
+            <span> My profile</span>
+          </router-link><br/>
+          <router-link 
+            to="/profile" 
+            @click="logOut()"
+            class="btn-sm">
             <em class="ni ni-user-run"></em>
-            <span>Logout</span>
+            <span> Logout</span>
           </router-link>
         </base-dropdown>
       </li>
@@ -70,6 +74,16 @@ export default {
     toggleMenu() {
       this.showMenu = !this.showMenu;
     },
+    logOut() {
+      this.$store.commit('REMOVE_LOGGED_USER');
+    },
+    // async currentUser() {
+    //   httpAxios.get("users/me").then(function (response) {
+    //     this.fetchUser = response.data.data;
+    //   }).catch(function (error) {
+    //     console.log(error.message);
+    //   });
+    // },
   },
 };
 </script>

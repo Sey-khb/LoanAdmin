@@ -1,12 +1,12 @@
 // Import
 import axios from 'axios';
 import store from '@/store';
-import { appConfig } from '@/config/app';
 import { showNotification } from '@/utils/show-notification';
+// import route from "../router";
 
 // Create
 const service = axios.create({
-  baseURL: appConfig.BACKEND_URL,
+  baseURL: 'http://localhost:8000/',
 });
 
 // Token
@@ -44,7 +44,7 @@ service.interceptors.response.use(
       // Session Expired
       if (401 === error.response.status) {
         errors = error.response.data.message;
-        store.dispatch('logOut');
+        // store.dispatch('logOut');
       }
 
       // Errors from backend
@@ -69,6 +69,9 @@ service.interceptors.response.use(
       // 404
       if (error.response.status == 404) {
         errors = 'Page not found!';
+      }
+      if(error.response.status == 401){
+        // route.push({path: "/login"})
       }
     }
 
