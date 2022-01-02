@@ -16,6 +16,15 @@
     <div class="container-fluid mt--7">
       <div class="col-xl-12 order-xl-1">
         <card shadow type="secondary">
+          <template v-slot:header>
+            <div class="bg-white border-0">
+              <div class="row align-items-center">
+                <div class="col-12">
+                  <h3 class="mb-0">Customer Information</h3>
+                </div>
+              </div>
+            </div>
+          </template>
           <div class="container">
             <table class="table table-striped" aria-hidden="true">
               <tr>
@@ -167,13 +176,14 @@
                   <router-link
                     v-bind:to="'/customer/' + cusDetial.id + '/edit'"
                     class="btn btn-sm btn-primary"
-                    title="Preview"
+                    title="Modify"
                   >
                     <em class="far fa-edit"></em>
                   </router-link>
                   <router-link
-                    v-bind:to="'/customer/' + cusDetial.id + '/edit'"
+                    v-bind:to="'/customer/' + cusDetial.id"
                     class="btn btn-sm btn-danger"
+                    title="Delete"
                   >
                     <em class="far fa-trash-alt"></em>
                   </router-link>

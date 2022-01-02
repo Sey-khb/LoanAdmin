@@ -22,7 +22,7 @@
               <div class="bg-white border-0">
                 <div class="row align-items-center">
                   <div class="col-8">
-                    <h3 class="mb-0">Create User</h3>
+                    <h3 class="mb-0">Update User</h3>
                   </div>
                 </div>
               </div>
@@ -132,12 +132,12 @@
                   </base-input>
                 </div>
                 <button
-                  v-on:click="createUser"
+                  v-on:click="updateUser"
                   type="button"
                   class="btn btn-primary"
                 >
                   <em class="fas fa-save"></em>
-                  Save
+                  Update
                 </button>
                 <button
                   v-on:click="onCancel"
@@ -159,7 +159,7 @@
 import httpAxios from "@/utils/http-axios";
 
 export default {
-  name: "New User",
+  name: "Update User",
   data() {
     return {
       userData: {
@@ -178,29 +178,28 @@ export default {
     uploadFile() {
       this.file = this.$refs.file.files;
     },
-    createUser() {
+    async getUserById() {
       const self = this;
-      const formData = new FormData();
-      formData.append("name", self.userData.name);
-      formData.append("email", self.userData.email);
-      formData.append("password", self.userData.password);
-      formData.append("dob", self.userData.dob);
-      formData.append("gender", self.userData.gender);
-      formData.append("con_password", self.userData.con_password);
-      formData.append("about_me", self.userData.about_me);
-      formData.append("address", self.userData.address);
-      httpAxios({
-        url: "user",
-        method: "POST",
-        data: formData,
-      });
-      self.$router.push("/user");
+      const result = await httpAxios.get("user/" + self.$route.params.id);
+      if (result.data.success) {
+        self.userData = result.data.data;
+      }
+    },
+    async updateUser() {
+      const self = this;
+      const result = await httpAxios.put("user/" + self.$route.params.id, self.userData);
+      if (result.data.success) {
+        self.$router.push("/user");
+      }
     },
     onCancel() {
       const self = this;
       self.show = false;
       self.$router.push("/user");
     },
+  },
+  mounted() {
+    this.getUserById();
   },
 };
 </script>

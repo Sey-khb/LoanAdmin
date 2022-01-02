@@ -7,11 +7,14 @@ import AuthLayout from "@/layout/AuthLayout";
 import Dashboard from "../views/Dashboard.vue";
 import ListCustomer from "../views/Customers/ListCustomer.vue";
 import NewCustomer from "../views/Customers/NewCustomer.vue";
+import UpdateCustomer from "../views/Customers/UpdateCustomer.vue";
 import ShowCus from "../views/Customers/CustomerDetial";
 import ListDisbursement from "../views/Disbursements/ListDisbursement";
 import NewDisbursement from "../views/Disbursements/NewDisbursement";
 import ListUser from "../views/ListUser.vue";
 import Profile from "../views/UserProfile.vue";
+import UpdateUser from "../views/UpdateUser.vue";
+import UserDetial from "../views/UserDetial.vue";
 import MyAccount from "../views/MyAccount.vue";
 import ShowDis from "../views/Disbursements/Show.vue";
 
@@ -45,8 +48,8 @@ const routes = [
       },
       {
         path: "/customer/:id/edit",
-        name: "Edit Customer",
-        components: { default: NewCustomer },
+        name: "Update Customer",
+        components: { default: UpdateCustomer },
         meta: { requireAuth: true },
       },
       {
@@ -77,6 +80,18 @@ const routes = [
         path: "/new-user",
         name: "New User",
         components: { default: Profile },
+        meta: { requireAuth: true },
+      },
+      {
+        path: "/user/:id/edit",
+        name: "Edit User",
+        components: { default: UpdateUser },
+        meta: { requireAuth: true },
+      },
+      {
+        path: "/user/:id/show",
+        name: "User Detial",
+        components: { default: UserDetial },
         meta: { requireAuth: true },
       },
       {

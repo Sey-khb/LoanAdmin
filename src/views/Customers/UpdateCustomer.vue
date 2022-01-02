@@ -21,7 +21,7 @@
             <div class="bg-white border-0">
               <div class="row align-items-center">
                 <div class="col-12">
-                  <h3 class="mb-0">Create Customer</h3>
+                  <h3 class="mb-0">Update Customer</h3>
                 </div>
               </div>
             </div>
@@ -209,16 +209,17 @@
               </div>
               <button
                 type="button"
-                @click="createCustomer()"
+                @click="updateCustomer()"
                 class="btn btn-primary"
               >
                 <em class="fas fa-save"></em>
-                Save
+                Update
               </button>
-              <button 
+              <button
                 v-on:click="onCancel"
-                type="button" 
-                class="btn btn-secondary">
+                type="button"
+                class="btn btn-secondary"
+              >
                 <em class="fas fa-window-close"></em>
                 Cancel
               </button>
@@ -233,7 +234,7 @@
 import httpAxios from "@/utils/http-axios";
 
 export default {
-  name: "newcustomer",
+  name: "Update Customer",
   data() {
     return {
       cusData: {
@@ -256,20 +257,31 @@ export default {
       },
     };
   },
+  mounted() {
+    this.getCusById();
+  },
   methods: {
-    async createCustomer() {
-      const isSave = await httpAxios.post("customer", this.cusData);
-      if (isSave) {
+    async getCusById() {
+      const self = this;
+      const result = await httpAxios.get("customer/" + self.$route.params.id);
+      self.cusData = result.data;
+    },
+    async updateCustomer() {
+      const self = this;
+      const result = await httpAxios.put(
+        "customer/" + self.$route.params.id,
+        self.cusData
+      );
+      if (result.data.success) {
         this.$swal({
           position: "top-end",
           icon: "success",
-          title: "The customer has been saved",
+          title: "The customer has been updated",
           showConfirmButton: false,
           timer: 1500,
         });
+        self.$router.push("/customer");
       }
-
-      this.$router.push("/customer");
     },
     onCancel() {
       this.show = false;

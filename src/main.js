@@ -3,10 +3,11 @@ import App from "./App.vue";
 import router from "./router";
 import ArgonDashboard from "./plugins/argon-dashboard";
 import "element-plus/lib/theme-chalk/index.css";
-import store from './store';
-import VueNotificationList from '@dafcoe/vue-notification';
-import VueSweetalert2 from 'vue-sweetalert2';
-import 'sweetalert2/dist/sweetalert2.min.css';
+import store from "./store";
+import VueNotificationList from "@dafcoe/vue-notification";
+import VueSweetalert2 from "vue-sweetalert2";
+import "sweetalert2/dist/sweetalert2.min.css";
+import 'vuejs-noty/dist/vuejs-noty.css'
 
 const appInstance = createApp(App);
 appInstance.use(router);

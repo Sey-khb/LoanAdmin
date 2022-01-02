@@ -52,7 +52,7 @@
                         <em class="far fa-eye"></em>
                       </router-link>
                       <router-link
-                        v-bind:to="'/customer/' + item.id + '/show'"
+                        v-bind:to="'/customer/' + item.id + '/edit'"
                         class="btn btn-sm btn-primary"
                       >
                         <em class="far fa-edit"></em>

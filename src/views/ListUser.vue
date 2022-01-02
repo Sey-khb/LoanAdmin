@@ -32,7 +32,6 @@
                     <th scope="col">Name</th>
                     <th scope="col">Gender</th>
                     <th scope="col">Date of Birth</th>
-                    <th scope="col">phone</th>
                     <th scope="col">Email</th>
                     <th scope="col">Actions</th>
                   </tr>
@@ -43,19 +42,19 @@
                     <td>{{ item.name }}</td>
                     <td>{{ item.gender }}</td>
                     <td>{{ item.dob }}</td>
-                    <td>{{ item.phone }}</td>
                     <td>{{ item.email }}</td>
                     <td>
-                      <button
-                        type="button"
+                      <router-link
+                        v-bind:to="'/user/' + item.id + '/show'"
                         class="btn btn-sm btn-info"
                         title="Preview"
                       >
                         <em class="far fa-eye"></em>
-                      </button>
+                      </router-link>
                       <router-link
-                        to="/my-account"
+                        v-bind:to="'/user/' + item.id + '/edit'"
                         class="btn btn-sm btn-primary"
+                        title="Modify"
                       >
                         <em class="far fa-edit"></em>
                       </router-link>
