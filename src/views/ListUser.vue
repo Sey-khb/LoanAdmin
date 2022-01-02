@@ -54,13 +54,13 @@
                         <em class="far fa-eye"></em>
                       </button>
                       <router-link
-                        to="/profile"
-                        @click="updateUser(item.id)"
+                        to="/my-account"
                         class="btn btn-sm btn-primary"
                       >
                         <em class="far fa-edit"></em>
                       </router-link>
                       <button
+                        v-on:click="deleteUser(item.id)"
                         type="button"
                         class="btn btn-sm btn-danger"
                         title="Delete"
@@ -95,6 +95,17 @@ export default {
         .get("user")
         .then(function (response) {
           self.users = response.data.data;
+        })
+        .catch(function (error) {
+          console.log(error.message);
+        });
+    },
+    deleteUser(user_id) {
+      var self = this;
+      httpAxios
+        .delete("user/" + user_id)
+        .then(function () {
+          self.getUsers();
         })
         .catch(function (error) {
           console.log(error.message);

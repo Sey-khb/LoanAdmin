@@ -31,7 +31,9 @@
               <span class="text-muted">Remember me</span>
             </base-checkbox>
             <div class="text-center">
-              <base-button type="primary" @click="login()" class="my-4">Sign in</base-button>
+              <base-button type="primary" @click="login()" class="my-4">
+                Sign in
+              </base-button>
             </div>
           </form>
         </div>
@@ -50,10 +52,10 @@
   </div>
 </template>
 <script>
-import httpAxios from '@/utils/http-axios';
+import httpAxios from "@/utils/http-axios";
 
 export default {
-  name: 'Login',
+  name: "Login",
   data() {
     return {
       username: null,
@@ -63,17 +65,16 @@ export default {
   methods: {
     login() {
       const self = this;
-      const formData = new FormData()
-      formData.append('username', self.username)
-      formData.append('password', self.password)
+      const formData = new FormData();
+      formData.append("username", self.username);
+      formData.append("password", self.password);
       httpAxios({
-        url: 'login',
-        method: 'POST',
-        data:  formData,
+        url: "login",
+        method: "POST",
+        data: formData,
       }).then(async (response) => {
-        self.$store.commit('LOGGED_USER', response.data);
-        
-        self.$router.push('/dashboard');
+        self.$store.commit("LOGGED_USER", response.data);
+        self.$router.push("/dashboard");
       });
     },
   },

@@ -22,12 +22,16 @@
               <div class="bg-white border-0">
                 <div class="row align-items-center">
                   <div class="col-8">
-                    <h3 class="mb-0">Create User</h3>
+                    <h3 class="mb-0">My account</h3>
+                  </div>
+                  <div class="col-4 text-right">
+                    <a href="#!" class="btn btn-sm btn-primary">Settings</a>
                   </div>
                 </div>
               </div>
             </template>
             <form>
+              <h6 class="heading-small text-muted mb-4">User information</h6>
               <div class="pl-lg-4">
                 <div class="row">
                   <div class="col-lg-6">
@@ -51,6 +55,7 @@
                 <div class="row">
                   <div class="col-lg-6">
                     <base-input
+                      readonly
                       type="email"
                       alternative=""
                       label="Email address"
@@ -154,25 +159,25 @@
 import httpAxios from "@/utils/http-axios";
 
 export default {
-  name: "New User",
+  name: "My Account",
   data() {
     return {
       userData: {
         name: "",
-        email: "",
-        password: "",
-        dob: "",
         gender: "",
-        profile_img: "",
+        email: "",
+        dob: "",
+        password: "",
         con_password: "",
-        about_me: "",
         address: "",
+        profile: "",
+        about_me: "",
       },
     };
   },
   methods: {
     createUser() {
-      const is_success = httpAxios
+      httpAxios
         .post("user", this.userData)
         .then(function (response) {
           this.userData = response.data.data;
@@ -180,9 +185,6 @@ export default {
         .catch(function (error) {
           console.log(error.message);
         });
-      if (is_success) {
-        this.$router.push("/user");
-      }
     },
     onCancel() {
       this.show = false;

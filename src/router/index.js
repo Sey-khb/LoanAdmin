@@ -5,13 +5,14 @@ import DashboardLayout from "@/layout/DashboardLayout";
 import AuthLayout from "@/layout/AuthLayout";
 
 import Dashboard from "../views/Dashboard.vue";
-import ListCustomer from "../views/ListCustomer.vue";
-import NewCustomer from "../views/NewCustomer.vue";
+import ListCustomer from "../views/Customers/ListCustomer.vue";
+import NewCustomer from "../views/Customers/NewCustomer.vue";
+import ShowCus from "../views/Customers/CustomerDetial";
 import ListDisbursement from "../views/Disbursements/ListDisbursement";
 import NewDisbursement from "../views/Disbursements/NewDisbursement";
 import ListUser from "../views/ListUser.vue";
 import Profile from "../views/UserProfile.vue";
-import Tables from "../views/Tables.vue";
+import MyAccount from "../views/MyAccount.vue";
 import ShowDis from "../views/Disbursements/Show.vue";
 
 import Login from "../views/Login.vue";
@@ -31,7 +32,7 @@ const routes = [
         meta: { requireAuth: true },
       },
       {
-        path: "list-customer",
+        path: "customer",
         name: "List Customer",
         components: { default: ListCustomer },
         meta: { requireAuth: true },
@@ -40,6 +41,18 @@ const routes = [
         path: "new-customer",
         name: "New Customer",
         components: { default: NewCustomer },
+        meta: { requireAuth: true },
+      },
+      {
+        path: "/customer/:id/edit",
+        name: "Edit Customer",
+        components: { default: NewCustomer },
+        meta: { requireAuth: true },
+      },
+      {
+        path: "/customer/:id/show",
+        name: "Customer Detial",
+        components: { default: ShowCus },
         meta: { requireAuth: true },
       },
       {
@@ -55,26 +68,25 @@ const routes = [
         meta: { requireAuth: true },
       },
       {
-        path: "list-user",
-        name: "UserList",
+        path: "user",
+        name: "User Lists",
         components: { default: ListUser },
         meta: { requireAuth: true },
       },
       {
-        path: "/profile",
-        name: "Profile",
+        path: "/new-user",
+        name: "New User",
         components: { default: Profile },
         meta: { requireAuth: true },
       },
       {
-        path: "/tables",
-        name: "tables",
-        components: { default: Tables },
+        path: "/my-account",
+        name: "My Account",
+        components: { default: MyAccount },
         meta: { requireAuth: true },
       },
       {
         path: "/list-disbursed/show",
-        name: "Show",
         components: { default: ShowDis },
         meta: { requireAuth: true },
       },

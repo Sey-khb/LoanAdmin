@@ -48,15 +48,19 @@
               </div>
               <div class="row">
                 <div class="col-lg-6">
-                  <base-input
-                    alternative=""
-                    label="Gender"
-                    input-classes="form-control-alternative"
+                  <label for="Gender">Gender</label>
+                  <select
+                    class="form-control form-control-alternative"
                     v-model="cusData.gender"
-                  />
+                  >
+                    <option value=""></option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                  </select>
                 </div>
                 <div class="col-lg-6">
                   <base-input
+                    type="date"
                     alternative=""
                     label="Date of Birth"
                     input-classes="form-control-alternative"
@@ -75,6 +79,7 @@
                 </div>
                 <div class="col-lg-6">
                   <base-input
+                    type="email"
                     alternative=""
                     label="Email"
                     input-classes="form-control-alternative"
@@ -84,12 +89,15 @@
               </div>
               <div class="row">
                 <div class="col-lg-6">
-                  <base-input
-                    alternative=""
-                    label="Nationality"
-                    input-classes="form-control-alternative"
+                  <label for="Nationality">Nationality</label>
+                  <select
+                    class="form-control form-control-alternative"
                     v-model="cusData.nationality"
-                  />
+                  >
+                    <option value=""></option>
+                    <option value="Male">Khmer</option>
+                    <option value="Female">Chinese</option>
+                  </select>
                 </div>
                 <div class="col-lg-6">
                   <base-input
@@ -120,12 +128,16 @@
               </div>
               <div class="row">
                 <div class="col-lg-6">
-                  <base-input
-                    alternative=""
-                    label="Identity Type"
-                    input-classes="form-control-alternative"
+                  <label for="Identity Type">Identity Type</label>
+                  <select
+                    class="form-control form-control-alternative"
                     v-model="cusData.identity_type"
-                  />
+                  >
+                    <option value=""></option>
+                    <option value="ID Card">ID Card</option>
+                    <option value="Passport">Passport</option>
+                    <option value="Family Book">Family Book</option>
+                  </select>
                 </div>
                 <div class="col-lg-6">
                   <base-input
@@ -149,6 +161,7 @@
                 <div class="col-lg-6">
                   <base-input
                     alternative=""
+                    type="date"
                     label="Issue Expired Date"
                     input-classes="form-control-alternative"
                     v-model="cusData.issue_expired_date"
@@ -158,6 +171,7 @@
               <div class="row">
                 <div class="col-lg-6">
                   <base-input
+                    type="text"
                     alternative=""
                     label="House Number"
                     input-classes="form-control-alternative"
@@ -167,7 +181,7 @@
                 <div class="col-lg-6">
                   <base-input
                     alternative=""
-                    type="date"
+                    type="text"
                     label="Street Number"
                     input-classes="form-control-alternative"
                     v-model="cusData.street_no"
@@ -193,8 +207,21 @@
                   />
                 </div>
               </div>
-              <button type="button" class="btn btn-primary"><em class="fas fa-save"></em> Save</button>
-              <button type="button" class="btn btn-secondary"><em class="fas fa-window-close"></em> Cancel</button>
+              <button
+                type="button"
+                @click="createCustomer()"
+                class="btn btn-primary"
+              >
+                <em class="fas fa-save"></em>
+                Save
+              </button>
+              <button 
+                v-on:click="onCancel"
+                type="button" 
+                class="btn btn-secondary">
+                <em class="fas fa-window-close"></em>
+                Cancel
+              </button>
             </div>
           </form>
         </card>
@@ -203,12 +230,51 @@
   </div>
 </template>
 <script>
+import httpAxios from "@/utils/http-axios";
+
 export default {
   name: "newcustomer",
   data() {
     return {
-      cusData: {},
+      cusData: {
+        first_name: "",
+        last_name: "",
+        dob: "",
+        phone: "",
+        email: "",
+        nationality: "",
+        income: "",
+        expense: "",
+        identity_type: "",
+        identity_number: "",
+        issue_date: "",
+        issue_expired_date: "",
+        no_number: "",
+        street_no: "",
+        address: "",
+        profile_im: "",
+      },
     };
+  },
+  methods: {
+    async createCustomer() {
+      const isSave = await httpAxios.post("customer", this.cusData);
+      if (isSave) {
+        this.$swal({
+          position: "top-end",
+          icon: "success",
+          title: "The customer has been saved",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+
+      this.$router.push("/customer");
+    },
+    onCancel() {
+      this.show = false;
+      this.$router.push("/customer");
+    },
   },
 };
 </script>

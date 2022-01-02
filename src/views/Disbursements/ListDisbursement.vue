@@ -21,7 +21,11 @@
             <div class="bg-white border-0">
               <div class="row align-items-center">
                 <div class="col-12">
-                  <router-link to="/new-disbursement" class="btn btn-primary btn-sm mb-2"><em class="far fa-plus-square"></em> New</router-link>
+                  <router-link
+                    to="/new-disbursement"
+                    class="btn btn-primary btn-sm mb-2"
+                    ><em class="far fa-plus-square"></em> New</router-link
+                  >
                 </div>
               </div>
 
@@ -38,7 +42,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  <tr v-for="(item, index) in users" :key="index">
                     <th scope="row">1</th>
                     <td>Mark</td>
                     <td>Otto</td>
@@ -46,10 +50,17 @@
                     <td>Otto</td>
                     <td>@mdo</td>
                     <td>
-                      <router-link to="/list-disbursed/show" class="btn btn-sm btn-info">                        
+                      <router-link
+                        to="/list-disbursed/show"
+                        class="btn btn-sm btn-info"
+                      >
                         <em class="far fa-eye"></em>
                       </router-link>
-                      <button type="button" class="btn btn-sm btn-danger" title="Delete">
+                      <button
+                        type="button"
+                        class="btn btn-sm btn-danger"
+                        title="Delete"
+                      >
                         <em class="far fa-trash-alt"></em>
                       </button>
                     </td>
@@ -64,8 +75,31 @@
   </div>
 </template>
 <script>
+import httpAxios from "@/utils/http-axios";
+
 export default {
-  name: "user-profile",
+  name: "DisbursedList",
+  data: function () {
+    return {
+      disData: {},
+    };
+  },
+  methods: {
+    getDisData() {
+      var self = this;
+      httpAxios
+        .get("user")
+        .then(function (response) {
+          self.disData = response.data.data;
+        })
+        .catch(function (error) {
+          console.log(error.message);
+        });
+    },
+  },
+  created() {
+    this.getDisData();
+  },
 };
 </script>
 <style>

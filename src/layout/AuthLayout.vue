@@ -49,7 +49,7 @@
             </router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link nav-link-icon" to="/profile">
+            <router-link class="nav-link nav-link-icon" to="/my-account">
               <em class="ni ni-single-02"></em>
               <span class="nav-link-inner--text">Profile</span>
             </router-link>

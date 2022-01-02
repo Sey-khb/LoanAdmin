@@ -38,13 +38,13 @@
             <h6 class="text-overflow m-0">Welcome!</h6>
           </div>
           <router-link 
-            to="/profile"
+            to="/my-account"
             class="btn-sm">
             <em class="ni ni-single-02"></em>
             <span> My profile</span>
           </router-link><br/>
           <router-link 
-            to="/profile" 
+            to="/login" 
             @click="logOut()"
             class="btn-sm">
             <em class="ni ni-user-run"></em>

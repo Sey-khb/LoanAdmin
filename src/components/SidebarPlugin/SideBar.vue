@@ -50,21 +50,9 @@
             <div class="dropdown-header noti-title">
               <h6 class="text-overflow m-0">Welcome!</h6>
             </div>
-            <router-link to="/profile" class="dropdown-item">
+            <router-link to="/user" class="dropdown-item">
               <em class="ni ni-single-02"></em>
               <span>My profile</span>
-            </router-link>
-            <router-link to="/profile" class="dropdown-item">
-              <em class="ni ni-settings-gear-65"></em>
-              <span>Settings</span>
-            </router-link>
-            <router-link to="/profile" class="dropdown-item">
-              <em class="ni ni-calendar-grid-58"></em>
-              <span>Activity</span>
-            </router-link>
-            <router-link to="/profile" class="dropdown-item">
-              <em class="ni ni-support-16"></em>
-              <span>Support</span>
             </router-link>
             <div class="dropdown-divider"></div>
             <a href="#!" class="dropdown-item">

@@ -87,23 +87,12 @@
               </div>
             </template>
             <div class="chart-area">
-              <canvas :height="350" :id="salesChartID"></canvas>
+              <!-- <canvas :height="350" :id="salesChartID"></canvas> -->
             </div>
           </card>
         </div>
       </div>
       <!-- End charts-->
-
-      <!--Tables-->
-      <div class="row mt-5">
-        <div class="col-xl-8 mb-5 mb-xl-0">
-          <page-visits-table></page-visits-table>
-        </div>
-        <div class="col-xl-4">
-          <social-traffic-table></social-traffic-table>
-        </div>
-      </div>
-      <!--End tables-->
     </div>
   </div>
 </template>

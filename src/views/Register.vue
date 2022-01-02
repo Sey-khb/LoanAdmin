@@ -86,9 +86,9 @@ export default {
   },
   methods: {
     async register() {
-      await httpAxios.post("register", this.registerData)
+      await httpAxios.post("register", this.registerData);
 
-      this.$router.push("/login")
+      this.$router.push("/login");
     },
   },
 };

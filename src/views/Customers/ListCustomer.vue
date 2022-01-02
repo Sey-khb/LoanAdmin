@@ -24,7 +24,6 @@
                   <h3 class="mb-0">All Customers</h3>
                 </div>
               </div>
-
               <table class="table table-striped">
                 <thead>
                   <tr>
@@ -38,21 +37,31 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
+                  <tr v-for="(item, index) in cusList" :key="item.id">
+                    <th scope="" v-text="index + 1"></th>
+                    <td v-text="item.first_name + ' ' + item.last_name"></td>
+                    <td v-text="item.gender"></td>
+                    <td v-text="item.dob"></td>
+                    <td v-text="item.phone"></td>
+                    <td v-text="item.email"></td>
                     <td>
-                      <button type="button" class="btn btn-sm btn-info" title="Preview">
+                      <router-link
+                        v-bind:to="'/customer/' + item.id + '/show'"
+                        class="btn btn-sm btn-info"
+                      >
                         <em class="far fa-eye"></em>
-                      </button>
-                      <button type="button" class="btn btn-sm btn-primary" title="Edit">
+                      </router-link>
+                      <router-link
+                        v-bind:to="'/customer/' + item.id + '/show'"
+                        class="btn btn-sm btn-primary"
+                      >
                         <em class="far fa-edit"></em>
-                      </button>
-                      <button type="button" class="btn btn-sm btn-danger" title="Delete">
+                      </router-link>
+                      <button
+                        v-on:click="deleteCustomer(item.id)"
+                        class="btn btn-sm btn-danger"
+                        type="button"
+                      >
                         <em class="far fa-trash-alt"></em>
                       </button>
                     </td>
@@ -67,8 +76,42 @@
   </div>
 </template>
 <script>
+import httpAxios from "@/utils/http-axios";
+
 export default {
-  name: "user-profile",
+  name: "List Customer",
+  data: function () {
+    return {
+      cusList: {},
+    };
+  },
+  methods: {
+    getCustomers() {
+      var self = this;
+      httpAxios
+        .get("customer")
+        .then(function (response) {
+          self.cusList = response.data.data;
+        })
+        .catch(function (error) {
+          console.log(error.message);
+        });
+    },
+    deleteCustomer(cus_id) {
+      var self = this;
+      httpAxios
+      .delete("customer/" + cus_id)
+        .then(function () {
+          self.getCustomers();
+        })
+        .catch(function (error) {
+          console.log(error.message);
+        });
+    },
+  },
+  created() {
+    this.getCustomers();
+  },
 };
 </script>
 <style>

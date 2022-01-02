@@ -18,7 +18,7 @@
           :link="{
             name: 'Customer Lists',
             icon: 'ni ni-bullet-list-67',
-            path: 'list-customer',
+            path: 'customer',
           }"
         />
         <sidebar-item
@@ -47,14 +47,14 @@
           :link="{
             name: 'User Lists',
             icon: 'ni ni-bullet-list-67',
-            path: 'list-user',
+            path: 'user',
           }"
         />
         <sidebar-item
           :link="{
             name: 'New User',
             icon: 'ni ni-single-02 text-yellow',
-            path: '/profile',
+            path: '/new-user',
           }"
         />
         <sidebar-item

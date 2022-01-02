@@ -32,64 +32,98 @@
                 <div class="col-lg-6">
                   <base-input
                     alternative=""
-                    label="Frist Name"
+                    label="Customer"
                     input-classes="form-control-alternative"
-                    v-model="cusData.first_name"
+                    v-model="cusData.cus_id"
                   />
                 </div>
                 <div class="col-lg-6">
+                  <label for="Product Name">Product Name</label>
+                  <select
+                    class="form-control form-control-alternative"
+                    v-model="cusData.product_name"
+                  >
+                    <option value=""></option>
+                    <option value="Personal">Personal</option>
+                    <option value="Representative">Representative</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
                   <base-input
+                    type="number"
                     alternative=""
-                    label="Last Name"
+                    label="Disbursed Amount"
                     input-classes="form-control-alternative"
-                    v-model="cusData.last_name"
+                    v-model="cusData.balance"
                   />
+                </div>
+                <div class="col-lg-6">
+                  <label for="Currency">Currency</label>
+                  <select
+                    class="form-control form-control-alternative"
+                    v-model="cusData.currency"
+                  >
+                    <option value=""></option>
+                    <option value="USD">USD</option>
+                    <option value="Riel">Riel</option>
+                  </select>
                 </div>
               </div>
               <div class="row">
                 <div class="col-lg-6">
                   <base-input
                     alternative=""
-                    label="Gender"
+                    label="Interest Rate (%)" 
                     input-classes="form-control-alternative"
-                    v-model="cusData.gender"
+                    v-model="cusData.interest_rate"
                   />
                 </div>
                 <div class="col-lg-6">
-                  <base-input
-                    alternative=""
-                    label="Date of Birth"
-                    input-classes="form-control-alternative"
-                    v-model="cusData.dob"
-                  />
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-lg-6">
-                  <base-input
-                    alternative=""
-                    label="Phone"
-                    input-classes="form-control-alternative"
-                    v-model="cusData.phone"
-                  />
-                </div>
-                <div class="col-lg-6">
-                  <base-input
-                    alternative=""
-                    label="Email"
-                    input-classes="form-control-alternative"
-                    v-model="cusData.email"
-                  />
+                  <label for="Interest Period">Interest Period</label>
+                  <select
+                    class="form-control form-control-alternative"
+                    v-model="cusData.interest_period"
+                  >
+                    <option value=""></option>
+                    <option value="Month">Monthly</option>
+                    <option value="Year">Yearly</option>
+                    <option value="Week">Weekly</option>
+                  </select>
                 </div>
               </div>
               <div class="row">
                 <div class="col-lg-6">
                   <base-input
                     alternative=""
-                    label="Nationality"
+                    type="number"
+                    label="Fee Rate (%)"
                     input-classes="form-control-alternative"
+                    v-model="cusData.fee_rate"
+                  />
+                </div>
+                <div class="col-lg-6">
+                  <base-input
+                    type="number"
+                    alternative=""
+                    label="Frequency"
+                    input-classes="form-control-alternative"
+                    v-model="cusData.frequency"
+                  />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <label for="Nationality">Nationality</label>
+                  <select
+                    class="form-control form-control-alternative"
                     v-model="cusData.nationality"
-                  />
+                  >
+                    <option value=""></option>
+                    <option value="Male">Khmer</option>
+                    <option value="Female">Chinese</option>
+                  </select>
                 </div>
                 <div class="col-lg-6">
                   <base-input
@@ -104,7 +138,7 @@
                 <div class="col-lg-6">
                   <base-input
                     alternative=""
-                    label="Income"
+                    label="Income ($)"
                     input-classes="form-control-alternative"
                     v-model="cusData.income"
                   />
@@ -112,7 +146,7 @@
                 <div class="col-lg-6">
                   <base-input
                     alternative=""
-                    label="Expense"
+                    label="Expense ($)"
                     input-classes="form-control-alternative"
                     v-model="cusData.expense"
                   />
@@ -120,12 +154,16 @@
               </div>
               <div class="row">
                 <div class="col-lg-6">
-                  <base-input
-                    alternative=""
-                    label="Identity Type"
-                    input-classes="form-control-alternative"
+                  <label for="Identity Type">Identity Type</label>
+                  <select
+                    class="form-control form-control-alternative"
                     v-model="cusData.identity_type"
-                  />
+                  >
+                    <option value=""></option>
+                    <option value="ID Card">ID Card</option>
+                    <option value="Passport">Passport</option>
+                    <option value="Family Book">Family Book</option>
+                  </select>
                 </div>
                 <div class="col-lg-6">
                   <base-input
@@ -149,6 +187,7 @@
                 <div class="col-lg-6">
                   <base-input
                     alternative=""
+                    type="date"
                     label="Issue Expired Date"
                     input-classes="form-control-alternative"
                     v-model="cusData.issue_expired_date"
@@ -158,6 +197,7 @@
               <div class="row">
                 <div class="col-lg-6">
                   <base-input
+                    type="text"
                     alternative=""
                     label="House Number"
                     input-classes="form-control-alternative"
@@ -167,7 +207,7 @@
                 <div class="col-lg-6">
                   <base-input
                     alternative=""
-                    type="date"
+                    type="text"
                     label="Street Number"
                     input-classes="form-control-alternative"
                     v-model="cusData.street_no"
@@ -194,7 +234,7 @@
                 </div>
               </div>
               <button type="button" class="btn btn-primary">
-                <em class="fas fa-save"></em> 
+                <em class="fas fa-save"></em>
                 Save
               </button>
               <button type="button" class="btn btn-secondary">
