@@ -1,17 +1,8 @@
 <template>
   <div>
-    <base-header
-      class="header pb-7 pt-2 pt-lg-7 d-flex align-items-center"
-      style="
-        min-height: 10px;
-        background-image: url(img/theme/profile-cover.jpg);
-        background-size: cover;
-        background-position: center top;
-      "
-    >
+    <base-header class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="background-image: url(img/theme/profile-cover.jpg);background-size: cover;background-position: center top;">
       <!-- Mask -->
       <span class="mask bg-gradient-success opacity-8"></span>
-      <!-- Header container -->
     </base-header>
 
     <div class="container-fluid mt--7">

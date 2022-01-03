@@ -30,7 +30,7 @@ const routes = [
     children: [
       {
         path: "/dashboard",
-        name: "Dashboard",
+        name: "dashboard ",
         components: { default: Dashboard },
         meta: { requireAuth: true },
       },
@@ -40,6 +40,7 @@ const routes = [
         components: { default: ListCustomer },
         meta: { requireAuth: true },
       },
+      
       {
         path: "new-customer",
         name: "New Customer",
@@ -108,6 +109,7 @@ const routes = [
       },
     ],
   },
+  
   {
     path: "/",
     redirect: "/login",
