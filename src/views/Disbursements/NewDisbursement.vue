@@ -21,7 +21,7 @@
             <div class="bg-white border-0">
               <div class="row align-items-center">
                 <div class="col-12">
-                  <h3 class="mb-0">New Disbursement</h3>
+                  <h3 class="mb-0">Create Disbursement</h3>
                 </div>
               </div>
             </div>
@@ -29,19 +29,19 @@
           <form>
             <div class="pl-lg-4">
               <div class="row">
-                <div class="col-lg-6">
-                  <base-input
-                    alternative=""
-                    label="Customer"
-                    input-classes="form-control-alternative"
-                    v-model="cusData.cus_id"
-                  />
+                <div class="col-lg-6 mb-4">
+                  <label for="Product Name">Customer</label>
+                  <select class="form-control form-control-alternative" v-model="disbursementData.cus_id">
+                    <option value=""></option>
+                    <option value="2">Phai Rotana</option>
+                    <option value="3">Mr Suy</option>
+                  </select>
                 </div>
                 <div class="col-lg-6">
                   <label for="Product Name">Product Name</label>
                   <select
                     class="form-control form-control-alternative"
-                    v-model="cusData.product_name"
+                    v-model="disbursementData.product_type"
                   >
                     <option value=""></option>
                     <option value="Personal">Personal</option>
@@ -56,14 +56,14 @@
                     alternative=""
                     label="Disbursed Amount"
                     input-classes="form-control-alternative"
-                    v-model="cusData.balance"
+                    v-model="disbursementData.balance"
                   />
                 </div>
                 <div class="col-lg-6">
                   <label for="Currency">Currency</label>
                   <select
                     class="form-control form-control-alternative"
-                    v-model="cusData.currency"
+                    v-model="disbursementData.currency"
                   >
                     <option value=""></option>
                     <option value="USD">USD</option>
@@ -75,16 +75,40 @@
                 <div class="col-lg-6">
                   <base-input
                     alternative=""
-                    label="Interest Rate (%)" 
+                    label="Duration"
+                    type="number"
                     input-classes="form-control-alternative"
-                    v-model="cusData.interest_rate"
+                    v-model="disbursementData.duration"
+                  />
+                </div>
+                <div class="col-lg-6">
+                  <label for="Interest Period">Duration Period</label>
+                  <select
+                    class="form-control form-control-alternative"
+                    v-model="disbursementData.duration_period"
+                  >
+                    <option value=""></option>
+                    <option value="Month">Monthly</option>
+                    <option value="Year">Yearly</option>
+                    <option value="Week">Weekly</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <base-input
+                    alternative=""
+                    label="Interest Rate (%)"
+                    type="number"
+                    input-classes="form-control-alternative"
+                    v-model="disbursementData.interest_rate"
                   />
                 </div>
                 <div class="col-lg-6">
                   <label for="Interest Period">Interest Period</label>
                   <select
                     class="form-control form-control-alternative"
-                    v-model="cusData.interest_period"
+                    v-model="disbursementData.interest_period"
                   >
                     <option value=""></option>
                     <option value="Month">Monthly</option>
@@ -100,7 +124,7 @@
                     type="number"
                     label="Fee Rate (%)"
                     input-classes="form-control-alternative"
-                    v-model="cusData.fee_rate"
+                    v-model="disbursementData.fee_rate"
                   />
                 </div>
                 <div class="col-lg-6">
@@ -109,68 +133,29 @@
                     alternative=""
                     label="Frequency"
                     input-classes="form-control-alternative"
-                    v-model="cusData.frequency"
+                    v-model="disbursementData.frequency"
                   />
                 </div>
               </div>
               <div class="row">
                 <div class="col-lg-6">
-                  <label for="Nationality">Nationality</label>
+                  <label for="Nationality">Repayment Method</label>
                   <select
                     class="form-control form-control-alternative"
-                    v-model="cusData.nationality"
+                    v-model="disbursementData.repayment_method"
                   >
                     <option value=""></option>
-                    <option value="Male">Khmer</option>
-                    <option value="Female">Chinese</option>
+                    <option value="Balloon">Balloon</option>
+                    <option value="Bullet">Bullet</option>
                   </select>
                 </div>
                 <div class="col-lg-6">
                   <base-input
                     alternative=""
-                    label="Cccupation"
+                    type="date"
+                    label="Disbursed Date"
                     input-classes="form-control-alternative"
-                    v-model="cusData.occupation"
-                  />
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-lg-6">
-                  <base-input
-                    alternative=""
-                    label="Income ($)"
-                    input-classes="form-control-alternative"
-                    v-model="cusData.income"
-                  />
-                </div>
-                <div class="col-lg-6">
-                  <base-input
-                    alternative=""
-                    label="Expense ($)"
-                    input-classes="form-control-alternative"
-                    v-model="cusData.expense"
-                  />
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-lg-6">
-                  <label for="Identity Type">Identity Type</label>
-                  <select
-                    class="form-control form-control-alternative"
-                    v-model="cusData.identity_type"
-                  >
-                    <option value=""></option>
-                    <option value="ID Card">ID Card</option>
-                    <option value="Passport">Passport</option>
-                    <option value="Family Book">Family Book</option>
-                  </select>
-                </div>
-                <div class="col-lg-6">
-                  <base-input
-                    alternative=""
-                    label="Identity Number"
-                    input-classes="form-control-alternative"
-                    v-model="cusData.identity_number"
+                    v-model="disbursementData.dis_date"
                   />
                 </div>
               </div>
@@ -179,65 +164,25 @@
                   <base-input
                     alternative=""
                     type="date"
-                    label="Issue Date"
+                    label="First Payment Date"
                     input-classes="form-control-alternative"
-                    v-model="cusData.issue_date"
-                  />
-                </div>
-                <div class="col-lg-6">
-                  <base-input
-                    alternative=""
-                    type="date"
-                    label="Issue Expired Date"
-                    input-classes="form-control-alternative"
-                    v-model="cusData.issue_expired_date"
+                    v-model="disbursementData.first_date"
                   />
                 </div>
               </div>
-              <div class="row">
-                <div class="col-lg-6">
-                  <base-input
-                    type="text"
-                    alternative=""
-                    label="House Number"
-                    input-classes="form-control-alternative"
-                    v-model="cusData.no_number"
-                  />
-                </div>
-                <div class="col-lg-6">
-                  <base-input
-                    alternative=""
-                    type="text"
-                    label="Street Number"
-                    input-classes="form-control-alternative"
-                    v-model="cusData.street_no"
-                  />
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-lg-12">
-                  <base-input
-                    alternative=""
-                    label="Address"
-                    input-classes="form-control-alternative"
-                    v-model="cusData.address"
-                  />
-                </div>
-                <div class="col-lg-12">
-                  <base-input
-                    alternative=""
-                    type="file"
-                    label="Profile"
-                    input-classes="form-control-alternative"
-                    v-model="cusData.profile_img"
-                  />
-                </div>
-              </div>
-              <button type="button" class="btn btn-primary">
+              <button
+                v-on:click="createDisbursement"
+                type="button"
+                class="btn btn-primary"
+              >
                 <em class="fas fa-save"></em>
                 Save
               </button>
-              <button type="button" class="btn btn-secondary">
+              <button
+                v-on:click="onCancel"
+                type="button"
+                class="btn btn-secondary"
+              >
                 <em class="fas fa-window-close"></em>
                 Cancel
               </button>
@@ -249,12 +194,50 @@
   </div>
 </template>
 <script>
+import httpAxios from "@/utils/http-axios";
+
 export default {
   name: "New disbursement",
   data() {
     return {
-      cusData: {},
+      disbursementData: {
+        cus_id: "",
+        product_type: "",
+        repayment_method: "",
+        interest_rate: "",
+        balance: "",
+        duration_period: "",
+        interest_period: "",
+        currency: "",
+        frequency: "",
+        duration: "",
+        fee_rate: "",
+        dis_date: "",
+        first_date: "",
+      },
     };
+  },
+  methods: {
+    async createDisbursement() {
+      const isSave = await httpAxios.post(
+        "disbursement",
+        this.disbursementData
+      );
+      if (isSave) {
+        this.$swal({
+          position: "top-end",
+          icon: "success",
+          title: "The Loan create successfully!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        this.$router.push("/disbursed");
+      }
+    },
+    onCancel() {
+      this.show = false;
+      this.$router.push("/disbursed");
+    },
   },
 };
 </script>

@@ -86,9 +86,17 @@ export default {
   },
   methods: {
     async register() {
-      await httpAxios.post("register", this.registerData);
-
-      this.$router.push("/login");
+      const is_save = await httpAxios.post("register", this.registerData);
+      if (is_save) {
+        this.$swal({
+          position: "top-end",
+          icon: "success",
+          title: "Register Successfuuly!!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        this.$router.push("/login");
+      }
     },
   },
 };

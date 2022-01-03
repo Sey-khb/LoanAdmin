@@ -263,7 +263,7 @@ export default {
         this.$swal({
           position: "top-end",
           icon: "success",
-          title: "The customer has been saved",
+          title: "The customer create successfully!!",
           showConfirmButton: false,
           timer: 1500,
         });

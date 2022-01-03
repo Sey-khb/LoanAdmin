@@ -59,7 +59,7 @@ const routes = [
         meta: { requireAuth: true },
       },
       {
-        path: "list-disbursed",
+        path: "disbursed",
         name: "List disbursed",
         components: { default: ListDisbursement },
         meta: { requireAuth: true },
@@ -101,7 +101,8 @@ const routes = [
         meta: { requireAuth: true },
       },
       {
-        path: "/list-disbursed/show",
+        path: "/disbursed/:id/show",
+        name: "Priview Disbursement",
         components: { default: ShowDis },
         meta: { requireAuth: true },
       },

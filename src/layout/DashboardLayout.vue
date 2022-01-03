@@ -33,7 +33,7 @@
           :link="{
             name: 'Disbursed Lists',
             icon: 'ni ni-bullet-list-67',
-            path: 'list-disbursed',
+            path: 'disbursed',
           }"
         />
         <sidebar-item
