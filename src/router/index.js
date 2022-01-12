@@ -20,7 +20,7 @@ import ShowDis from "../views/Disbursements/Show.vue";
 
 import Login from "../views/Login.vue";
 import Register from "../views/Register.vue";
-import store from "@/store";
+// import store from "@/store";
 
 const routes = [
   {
@@ -143,7 +143,7 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  let loggedUser = store.getters.getLoggedUser;
+  let loggedUser = true;
   if (to.meta.requireAuth && !loggedUser) next({ name: 'Login' })
   else next()
 })

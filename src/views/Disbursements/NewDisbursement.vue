@@ -31,11 +31,25 @@
               <div class="row">
                 <div class="col-lg-6 mb-4">
                   <label for="Product Name">Customer</label>
-                  <select class="form-control form-control-alternative" v-model="disbursementData.cus_id">
+                  <!-- <select class="form-control form-control-alternative" v-model="disbursementData.cus_id">
                     <option value=""></option>
                     <option value="2">Phai Rotana</option>
                     <option value="3">Mr Suy</option>
-                  </select>
+                  </select> -->
+                  <Multiselect
+                    v-model="value"
+                    placeholder="Choose a programming language"
+                    :filter-results="false"
+                    :min-chars="1"
+                    :resolve-on-load="false"
+                    :delay="0"
+                    :searchable="true"
+                    :options="
+                      async function (query) {
+                        return await ''; // check JS block for implementation
+                      }
+                    "
+                  />
                 </div>
                 <div class="col-lg-6">
                   <label for="Product Name">Product Name</label>
@@ -195,11 +209,24 @@
 </template>
 <script>
 import httpAxios from "@/utils/http-axios";
-
+import Multiselect from "@vueform/multiselect";
 export default {
   name: "New disbursement",
+  components: {
+    Multiselect,
+  },
   data() {
     return {
+      example6: {
+        value: null,
+        placeholder: "Choose a programming language",
+        filterResults: false,
+        minChars: 1,
+        resolveOnLoad: false,
+        delay: 0,
+        searchable: true,
+        options: null
+      },
       disbursementData: {
         cus_id: "",
         product_type: "",
@@ -250,3 +277,4 @@ export default {
   padding-left: 0px !important;
 }
 </style>
+<style src="@vueform/multiselect/themes/default.css"></style>
